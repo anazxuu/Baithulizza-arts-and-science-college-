@@ -97,3 +97,75 @@ void loop()
     DEVICE5State = "off"; 
     textMessage = ""; 
   }
+if(textMessage.indexOf("ALLDEVICEOFF")>=0){
+    digitalWrite(DEVICE1, LOW);
+    digitalWrite(DEVICE2, LOW);
+    digitalWrite(DEVICE3, LOW);
+    digitalWrite(DEVICE4, LOW);
+    digitalWrite(DEVICE5, LOW);
+
+    DEVICE1State = "off"; 
+    DEVICE2State = "off";
+    DEVICE3State = "off";
+    DEVICE4State = "off";
+    DEVICE5State = "off";
+
+    textMessage = ""; 
+  }
+  if(textMessage.indexOf("ALLDEVICEON")>=0){
+    digitalWrite(DEVICE1, HIGH);
+    digitalWrite(DEVICE2, HIGH);
+    digitalWrite(DEVICE3, HIGH);
+    digitalWrite(DEVICE4, HIGH);
+    digitalWrite(DEVICE5, HIGH);
+ 
+    DEVICE1State = "on"; 
+    DEVICE2State = "on";
+    DEVICE3State = "on";
+    DEVICE4State = "on";
+    DEVICE5State = "on";
+
+    textMessage = ""; 
+  }
+ 
+  if(textMessage.indexOf("DEVICE1STATE")>=0){
+    String message = "DEVICE1 is " + DEVICE1State;
+    sendSMS(message);
+    textMessage = "";
+  }
+  if(textMessage.indexOf("DEVICE2STATE")>=0){
+    String message = "DEVICE2 is " + DEVICE2State;
+    sendSMS(message);
+    textMessage = "";
+  }
+  if(textMessage.indexOf("DEVICE3STATE")>=0){
+    String message = "DEVICE3 is " + DEVICE3State;
+    sendSMS(message);
+    textMessage = "";
+  }
+    if(textMessage.indexOf("DEVICE4STATE")>=0){
+    String message = "DEVICE4 is " + DEVICE4State;
+    sendSMS(message);
+    textMessage = "";
+  }
+    if(textMessage.indexOf("DEVICE5STATE")>=0){
+    String message = "DEVICE5 is " + DEVICE5State;
+    sendSMS(message);
+    textMessage = "";
+  }
+}  
+
+void sendSMS(String message)  
+{
+  
+  Serial.print("AT+CMGF=1\r"); 
+  delay(100);
+  Serial.println("AT + CMGS = \"+917736972033\"");   
+  delay(100);
+  Serial.println(message); 
+  delay(100);
+  Serial.println((char)26); 
+  delay(100);
+  Serial.println();
+  delay(5000);  
+}
