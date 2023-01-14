@@ -13,10 +13,21 @@
 .btn {
   margin-right: 10px;
 }
-.section-three {
-  /* margin-left: 450px; */
+.section-one {
+  margin-left: 100px;
+  padding-left: 100px;
 }
 
 .room-heading {
   padding-left: 15px;
+  padding-top: 100px;
+}
+.container {
+  padding-left: 1000px;
+  margin-left: 100px;
+}
+
+.buttons {
+  padding-left: 115px;
+  margin-left: 10px;
 }
