@@ -1,3 +1,6 @@
+body{
+background-image: url("./images/backgound1.jpg");
+}
 .navbar-brand {
   font-family: JetBrains Mono;
 }
@@ -33,4 +36,8 @@
 }
 .mid-section {
   margin-bottom: 280px;
+}
+.item-name {
+  padding-left: 10px,
+  font-size: 20px;
 }
