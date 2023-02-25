@@ -11,10 +11,14 @@ String DEVICE3State = "LOW";
 String DEVICE4State = "LOW";
 String DEVICE5State = "LOW";
 
+int pirsensor = 9;
+
 
 void setup() 
 {
- 
+
+  pinMode(pirsensor, INPUT);
+   
   pinMode(DEVICE1, OUTPUT);
   pinMode(DEVICE2, OUTPUT);
   pinMode(DEVICE3, OUTPUT);
@@ -46,6 +50,16 @@ void loop()
     textMessage.toUpperCase();   
     delay(10);
   } 
+
+  if ( digitalRead(pirsensor) == LOW) 
+    {
+        Serial.println("Motion detected!");
+    Serial.println("calling....");
+    Serial.println("ATD+919746092557;"); 
+    delay(20000);
+    Serial.println("ATH");
+    } 
+  
   if(textMessage.indexOf("DEVICE1ON")>=0){
     digitalWrite(DEVICE1, HIGH);
     DEVICE1State = "on"; 
@@ -79,7 +93,12 @@ void loop()
    if(textMessage.indexOf("DEVICE4ON")>=0){
     digitalWrite(DEVICE4, HIGH);
     DEVICE4State = "on"; 
-    textMessage = "";   
+    textMessage = "";  
+    delay(10000);
+    Serial.println("ATD+919746092557;");
+    delay(20000);
+    Serial.println("ATH"); 
+     
   }
   if(textMessage.indexOf("DEVICE4OFF")>=0){
     digitalWrite(DEVICE4, LOW);
@@ -97,7 +116,8 @@ void loop()
     DEVICE5State = "off"; 
     textMessage = ""; 
   }
-if(textMessage.indexOf("ALLDEVICEOFF")>=0){
+ 
+  if(textMessage.indexOf("ALLDEVICEOFF")>=0){
     digitalWrite(DEVICE1, LOW);
     digitalWrite(DEVICE2, LOW);
     digitalWrite(DEVICE3, LOW);
@@ -160,7 +180,7 @@ void sendSMS(String message)
   
   Serial.print("AT+CMGF=1\r"); 
   delay(100);
-  Serial.println("AT + CMGS = \"+917736972033\"");   
+  Serial.println("AT + CMGS = \"+919746092557\"");   
   delay(100);
   Serial.println(message); 
   delay(100);
@@ -169,3 +189,4 @@ void sendSMS(String message)
   Serial.println();
   delay(5000);  
 }
+
